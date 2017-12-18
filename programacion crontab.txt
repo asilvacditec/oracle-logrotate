@@ -1,0 +1,8 @@
+
+
+#programación en la crontab
+59 23 * * * /usr/sbin/logrotate -vf -s /home/oracle/hpdba/log/logrotate.status /home/oracle/hpdba/bin/logrotate.cst.dba.hpe.conf 1> /home/oracle/hpdba/log/logrotate.log 2>&1
+
+
+
+

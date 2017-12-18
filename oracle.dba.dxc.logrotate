@@ -1,0 +1,46 @@
+# HPE: CST - CRITICAL SERVICES TEAM
+# Server: lbtvpaxbd05
+# File: /home/oracle/hpdba/bin/logrotate.cst.dba.hpe.conf 
+# Author: Aparecido Souza da Silva
+# Date: 22/03/2017
+# Descripcion:
+#  Oracle Database logrotate
+#  Para se rotacionar un log, tenemos que observar los siguientes puntos:
+#  1 - El usuario al cual ejecuta el comando logrotate debe tener los
+#      permisos necesarios sobre el archivo a se rotacionar
+#  2 - Poner la siguiente linea en la crontab:
+#      59 23 * * * /usr/sbin/logrotate -vf -s /home/oracle/hpdba/log/logrotate.status /home/oracle/hpdba/bin/logrotate.cst.dba.hpe.conf 1> /home/oracle/hpdba/log/logrotate.log 2>&1
+#
+# Change log:
+#
+
+
+#
+# Abajo se pone los archivos a se rotacionar:
+#
+
+# Listener logs
+/oracle/diag/tnslsnr/lbtvpaxbd05/listener/trace/listener.log
+/oracle/diag/tnslsnr/lbtvpaxbd05/listener_prcn/trace/listener_prcn.log
+/oracle/diag/tnslsnr/lbtvpaxbd05/listener_paxopb/trace/listener_paxopb.log
+/oracle/product/10.2.0/paxopa/network/log/listener_paxopa.log
+
+# Alert Logs
+/oracle/diag/asm/+asm/+ASM/trace/alert_+ASM.log
+/oracle/diag/rdbms/paxopb/paxopb/trace/alert_paxopb.log
+/oracle/diag/rdbms/prcn/prcn/trace/alert_prcn.log
+/oracle/admin/paxopa/bdump/alert_paxopa.log
+
+#
+# La configuracion 
+#
+{
+  daily
+  dateext
+  create
+  rotate 30
+  copytruncate
+  missingok
+  notifempyt
+  compress
+}
