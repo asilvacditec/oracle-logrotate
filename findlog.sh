@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DIR="/home/oracle/hpdba/.cido"
+DIR=`pwd`
 FILECONFIG="${DIR}/logrotate.dba.dxc.conf"
 LOGSTOSEARCH="alert*log listener*log"
 DATE_ID=`date +%Y%m%d%H%M%S`
