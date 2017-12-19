@@ -2,6 +2,7 @@
 
 DIR=`pwd`
 FILECONFIG="${DIR}/logrotate.dba.dxc.conf"
+DIRSTOSEARCH="/asm /oracle"
 LOGSTOSEARCH="alert*log listener*log"
 DATE_ID=`date +%Y%m%d%H%M%S`
 
@@ -10,12 +11,15 @@ if [ -f ${FILECONFIG} ]; then
 fi
 
 function findlog() {
-  find /oracle/ -name "$1" 2>/dev/null | grep "\.log"$
+  find "${1}" -name "${2}" 2>/dev/null | grep "\.log"$
 }
 
-for x in $LOGSTOSEARCH; do
-  findlog $x >> $FILECONFIG
+for x in ${DIRSTOSEARCH}; do
+  for y in ${LOGSTOSEARCH}; do
+        findlog "${x}" "${y}" >> "${FILECONFIG}"
+  done
 done
+
 
 echo ""
 echo ""
