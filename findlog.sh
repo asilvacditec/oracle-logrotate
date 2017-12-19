@@ -28,7 +28,7 @@ echo "  create" >> $FILECONFIG
 echo "  rotate 4" >> $FILECONFIG
 echo "  copytruncate"  >> $FILECONFIG
 echo "  missingok" >> $FILECONFIG
-echo "  notifempyt" >> $FILECONFIG
+echo "  notifempty" >> $FILECONFIG
 echo "  compress" >> $FILECONFIG
 echo "}" >> $FILECONFIG
 
