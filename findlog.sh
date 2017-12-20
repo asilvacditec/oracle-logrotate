@@ -26,7 +26,7 @@ echo ""
 echo ""
 echo "{" >> $FILECONFIG
 echo "  weekly" >> $FILECONFIG
-echo "  maxsize 100M" >> $FILECONFIG
+echo "  size 100M" >> $FILECONFIG
 echo "  dateext" >> $FILECONFIG
 echo "  create" >> $FILECONFIG
 echo "  rotate 4" >> $FILECONFIG
