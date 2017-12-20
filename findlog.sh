@@ -63,4 +63,11 @@ function update_crontab() {
 
 create_configfile
 
-update_crontab
+if (crontab -l | grep "logrotate"); then 
+	echo ""
+	echo ""
+	echo "*** El logrotate ya esta programado en la crontab ***"
+	echo "*** Si necesita cambios hacerlos manualmente ***"
+else 
+	update_crontab
+fi
