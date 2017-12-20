@@ -68,8 +68,8 @@ create_configfile
 if (crontab -l | grep "logrotate"); then 
 	echo ""
 	echo ""
-	echo "*** El logrotate ya esta programado en la crontab ***"
-	echo "*** Si necesita cambios hacerlos manualmente ***"
+  echo "*** Logrotate just scheduled on the crontab, nothing to do ***"
+  echo "*** If nedeed changes, please do it manually ***"
 else 
 	update_crontab
 fi
