@@ -16,7 +16,7 @@ if [ -f ${FILECONFIG} ]; then
 fi
 
 function findlog() {
-  find "${1}" -name "${2}" 2>/dev/null | grep "\.log"$
+  find "${1}" -user `whoami` -name "${2}" 2>/dev/null | grep "\.log"$
 }
 
 function create_configfile() {
@@ -60,7 +60,7 @@ function update_crontab() {
 
 	crontab -l
 
-	echo "Crontab updated successsfuly!"
+	echo "Crontab updated successfuly!"
 }
 
 create_configfile
