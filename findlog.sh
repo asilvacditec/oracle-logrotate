@@ -1,4 +1,9 @@
 #!/bin/bash
+# Date: 19/12/2017
+# Author: Aparecido Souza
+# Desc: Install logrotate for oracle logfiles via crontab
+#
+#
 
 DIR=`pwd`
 FILECONFIG="${DIR}/logrotate.dba.dxc.conf"
