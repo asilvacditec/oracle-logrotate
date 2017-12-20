@@ -59,6 +59,8 @@ function update_crontab() {
 	crontab crontab.tmp
 
 	crontab -l
+
+	echo "Crontab updated successsfuly!"
 }
 
 create_configfile
