@@ -51,7 +51,7 @@ function update_crontab() {
     ${DIR}/logrotate.status ${DIR}/logrotate.dba.dxc.conf > & \
     ${DIR}/logrotate.log" >> ${DIR}/crontab_logrotate.txt
   else
-    echo "59 23 * * * /usr/sbin/logrotate -d -f -s \
+    echo "59 23 * * * /usr/sbin/logrotate -d -v -s \
     ${DIR}/logrotate.status ${DIR}/logrotate.dba.dxc.conf 1> \
     ${DIR}/logrotate.log 2>&1" >> ${DIR}/crontab_logrotate.txt
   fi
