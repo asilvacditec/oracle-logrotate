@@ -63,19 +63,6 @@ function update_crontab() {
 	echo "Crontab updated successfuly!"
 }
 
-function execute_first() {
-	if [ "$SHELL" != "/bin/bash" ];then
-    /usr/sbin/logrotate -d -vf -s \ 
-    ${DIR}/logrotate.status ${DIR}/logrotate.dba.dxc.conf > & \ 
-    ${DIR}/logrotate.log
-  else
-    /usr/sbin/logrotate -d -vf -s \
-    ${DIR}/logrotate.status ${DIR}/logrotate.dba.dxc.conf 1> \
-    ${DIR}/logrotate.log 2>&1
-  fi
-}
-
-
 create_configfile
 
 if (crontab -l | grep "logrotate"); then 
@@ -86,6 +73,3 @@ if (crontab -l | grep "logrotate"); then
 else 
 	update_crontab
 fi
-
-execute_first
-
