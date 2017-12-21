@@ -47,11 +47,11 @@ function update_crontab() {
 	echo "" >> $DIR/crontab_logrotate.txt
 	echo "# DXCDBA - logrotate Oracle Database and Grid Infraestructure - ${DATE_ID}" >> $DIR/crontab_logrotate.txt
 	if [ "$SHELL" != "/bin/bash" ];then
-    echo "59 23 * * * /usr/sbin/logrotate -vf -s \
+    echo "59 23 * * * /usr/sbin/logrotate -d -v -s \
     ${DIR}/logrotate.status ${DIR}/logrotate.dba.dxc.conf > & \
     ${DIR}/logrotate.log" >> ${DIR}/crontab_logrotate.txt
   else
-    echo "59 23 * * * /usr/sbin/logrotate -vf -s \
+    echo "59 23 * * * /usr/sbin/logrotate -d -f -s \
     ${DIR}/logrotate.status ${DIR}/logrotate.dba.dxc.conf 1> \
     ${DIR}/logrotate.log 2>&1" >> ${DIR}/crontab_logrotate.txt
   fi
@@ -63,6 +63,19 @@ function update_crontab() {
 	echo "Crontab updated successfuly!"
 }
 
+function execute_first() {
+	if [ "$SHELL" != "/bin/bash" ];then
+    /usr/sbin/logrotate -d -vf -s \ 
+    ${DIR}/logrotate.status ${DIR}/logrotate.dba.dxc.conf > & \ 
+    ${DIR}/logrotate.log
+  else
+    /usr/sbin/logrotate -d -vf -s \
+    ${DIR}/logrotate.status ${DIR}/logrotate.dba.dxc.conf 1> \
+    ${DIR}/logrotate.log 2>&1
+  fi
+}
+
+
 create_configfile
 
 if (crontab -l | grep "logrotate"); then 
@@ -73,3 +86,6 @@ if (crontab -l | grep "logrotate"); then
 else 
 	update_crontab
 fi
+
+execute_first
+
