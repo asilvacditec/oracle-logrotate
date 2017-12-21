@@ -46,20 +46,20 @@ function update_crontab() {
 	echo "" > $DIR/crontab_logrotate.txt
 	echo "" >> $DIR/crontab_logrotate.txt
 	echo "# DXCDBA - logrotate Oracle Database and Grid Infraestructure - ${DATE_ID}" >> $DIR/crontab_logrotate.txt
-	echo "59 23 * * * /usr/sbin/logrotate -vf -s \
-	${DIR}/logrotate.status ${DIR}/logrotate.dba.dxc.conf 1> \
-	${DIR}/logrotate.log 2>&1" >> ${DIR}/crontab_logrotate.txt
-
+	if [ "$SHELL" != "/bin/bash" ];then
+    echo "59 23 * * * /usr/sbin/logrotate -vf -s \
+    ${DIR}/logrotate.status ${DIR}/logrotate.dba.dxc.conf > & \
+    ${DIR}/logrotate.log" >> ${DIR}/crontab_logrotate.txt
+  else
+    echo "59 23 * * * /usr/sbin/logrotate -vf -s \
+    ${DIR}/logrotate.status ${DIR}/logrotate.dba.dxc.conf 1> \
+    ${DIR}/logrotate.log 2>&1" >> ${DIR}/crontab_logrotate.txt
+  fi
 	crontab -l > ${DIR}/backup_crontab.txt.${DATE_ID}
-
 	crontab -l > ${DIR}/crontab.tmp
-
 	cat ${DIR}/crontab_logrotate.txt >> ${DIR}/crontab.tmp
-
 	crontab crontab.tmp
-
 	crontab -l
-
 	echo "Crontab updated successfuly!"
 }
 
