@@ -34,7 +34,7 @@ function create_configfile() {
 	echo "  minsize 10M" >> $FILECONFIG
 	echo "  dateext" >> $FILECONFIG
 	echo "  create" >> $FILECONFIG
-	echo "  rotate 10" >> $FILECONFIG
+	echo "  rotate 5" >> $FILECONFIG
 	echo "  copytruncate"  >> $FILECONFIG
 	echo "  missingok" >> $FILECONFIG
 	echo "  notifempty" >> $FILECONFIG
