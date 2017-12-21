@@ -31,7 +31,7 @@ function create_configfile() {
 	echo ""
 	echo "{" >> $FILECONFIG
 	echo "  daily" >> $FILECONFIG
-	echo "  minsize 100M" >> $FILECONFIG
+	echo "  minsize 10M" >> $FILECONFIG
 	echo "  dateext" >> $FILECONFIG
 	echo "  create" >> $FILECONFIG
 	echo "  rotate 10" >> $FILECONFIG
